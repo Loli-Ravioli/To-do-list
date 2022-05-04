@@ -1,0 +1,42 @@
+.app-list-item {
+  font-size: 1.25rem;
+}
+
+.app-list-item button {
+  width: 35px;
+  height: 35px;
+  margin: 3px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+    border-radius:7px;
+}
+.app-list-item button:focus {
+    box-shadow: none;
+    outline: none;
+}
+.app-list-item .bi-circle {
+    color: #212121;
+    font-size: 20px;
+}
+.app-list-item .bi-check2-circle{
+    color: #05d705;
+    font-size: 23px;
+}
+.app-list-item .btn-trash {
+    color: red;
+}
+
+
+.app-list-item-label {
+  display: block;
+  line-height: 35px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.5s all;
+}
+
+
+
+
+

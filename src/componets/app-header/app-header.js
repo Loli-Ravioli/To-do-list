@@ -1,11 +1,13 @@
 import React from "react";
+import "./app-header.css"
 
-let liked = undefined ?? 0;
-const AppHeader = () => {
+
+
+const AppHeader = ({completed,allPost}) => {
     return(
-        <div className="app-header d-flex">
-            <h1>Блог from India</h1>
-            <h2>Успешных собесов {liked}</h2>
+        <div className='app-header d-flex'>
+            <h1>To do</h1>
+            <h2>{completed} готовых из {allPost}</h2>
         </div>
     )
 }
