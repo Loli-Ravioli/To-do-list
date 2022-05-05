@@ -22,23 +22,25 @@ export default class App extends Component {
     constructor(props){
         super(props);
         this.state = {
+            //массив обьектов который может(и должен) приходит с сервера
             dataFromSomeWere : [
-                {content:"Скорей бы на скейт, а не вот это вот всё ", isCompleted:false, id:1},
-                {content:"Тестовые не шлют на собесы не зовут", isCompleted:false,id:2},
-                {content:"Заставляют играть в доку 2", isCompleted:false,id:3},
-                {content:"Шея после йоги болит", isCompleted:false,id:4}
+                {content:"Скорей бы погода нормальная", isCompleted:false, id:1},
+                {content:"Тестовые посты", isCompleted:false,id:2},
+                {content:"Доделать тестовое", isCompleted:false,id:3},
+                {content:"Тестовые заглушки", isCompleted:false,id:4}
             ],
             SearchTerm:"",
             filter:"all"
         };
-        this.Deleteitem=this.Deleteitem.bind(this);
+        this.DeleteItem=this.DeleteItem.bind(this);
         this.addItem=this.addItem.bind(this);
         this.completed=this.completed.bind(this);
         this.onUpdateSearch=this.onUpdateSearch.bind(this);
         this.onFilterSelect=this.onFilterSelect.bind(this);
         this.maxId=5;
     }
-    Deleteitem(id){
+    //Удаляет пост из списка и меняет state целиком
+    DeleteItem(id){
     this.setState(({dataFromSomeWere})=>{
         const index= dataFromSomeWere.findIndex(el=>el.id===id);
 
@@ -51,7 +53,7 @@ export default class App extends Component {
         }
     })
     }
-
+    //метод кторый добовлдяет новые посты и так же меняет state
     addItem(content){
         const newItem={
             content,
@@ -64,7 +66,7 @@ export default class App extends Component {
             }
         })
     }
-
+    //Меняет статус isCompleted и так же меняет state но в отоличии от прошлого метода полностью меняет весь стейт
     completed(id){
         this.setState(({dataFromSomeWere})=>{
 
@@ -80,7 +82,7 @@ export default class App extends Component {
             }
         })
     }
-
+    //поик поста
     searchPost(items,SearchTerm){
         if(SearchTerm.length === 0){
             return items
@@ -92,7 +94,7 @@ export default class App extends Component {
     onUpdateSearch(SearchTerm){
         this.setState({SearchTerm})
     }
-
+    // Фильтр для постов
     filerPost(items,filter){
 
         if(filter==="completed"){
@@ -101,6 +103,7 @@ export default class App extends Component {
             return items
         }
     }
+    //Меняет state filter на тот что выбратн в приложении в данный момент
     onFilterSelect(filter){
     this.setState({filter})
     }
@@ -108,9 +111,6 @@ export default class App extends Component {
 
 render() {
         const  {dataFromSomeWere,SearchTerm,filter}=this.state
-
-
-
         const completed2 = this.state.dataFromSomeWere.filter(el=> el.isCompleted).length
         const allPost = this.state.dataFromSomeWere.length;
         const visiblePost = this.filerPost(this.searchPost(dataFromSomeWere,SearchTerm),filter);
@@ -128,7 +128,7 @@ render() {
          </div>
          <PostList
              posts={visiblePost}
-             onDelete={this.Deleteitem}
+             onDelete={this.DeleteItem}
              completed={this.completed}
          />
          <PostAddForm

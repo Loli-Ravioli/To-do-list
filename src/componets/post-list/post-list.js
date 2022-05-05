@@ -3,23 +3,23 @@ import PostListItem from "../post-list-item"
 import {ListGroup} from "reactstrap";
 import "./post-list.css";
 
-const PostList=({posts,onDelete,completed})=>{
+//Список элементов
+const PostList = ({posts, onDelete, completed}) => {
 
-    const elements = posts.map((el)=>{
-        const {id,...elProps}=el;
-       return(
-           //разворот каждого элемента el тк ключ и свйоство совпадают
-           <li key={id} className="list-group-item">
+    const elements = posts.map((el) => {
+        const {id, ...elProps} = el;
+        return (
+            //разворот каждого элемента el тк ключ и свйоство совпадают
+            <li key={id} className="list-group-item">
                 <PostListItem {...elProps}
-                              onDelete={()=>onDelete(id)}
-                              completed={()=>completed(id)}
-
+                onDelete={() => onDelete(id)}
+                 completed={() => completed(id)}
                 />
-           </li>
-       )
+            </li>
+        )
     });
 
-    return(
+    return (
         <ListGroup className="app-list">
             {elements}
         </ListGroup>

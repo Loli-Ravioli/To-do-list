@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-
+// Фильтующие кнопки и сама фильтрация, передает через пропсы на уровень выше, какая кнопка активна в данный момент
 export default class PostStatusFilter extends Component{
     constructor(props) {
         super(props);
